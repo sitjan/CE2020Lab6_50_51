@@ -5,27 +5,35 @@ bool Graph :: isEmpty() {
     return data.size()==0?true:false;
     }
 bool Graph:: isDirected(){
-    return isDirected;
+    return isDirectedGraph;
 }
 
 void Graph:: addVertex(char newVertex){
     Vertex vertex;
     vertex.name = newVertex;
     vertex.position = vertices.size();
+    vertices.push_back(vertex);
     noOfVertex +=1;
+    if(data.size()==0){
+        data.push_back(vector<int> (1,0));// vector 1 = {1,23,4,5,6,4}//vector.pushback(4) 
+    }else{
+        //euta loop ma chai add a column
+        for (int i = 0; i < data.size(); i++)
+        {
+            data[i].push_back(0);
+        }
+        data.push_back(vector <int> (data.size()+1,0));
+    }
 }
 
 bool Graph :: vertexExist (char vertexTofind){
     for (int i=0 ; i<vertices.size(); i++){
         if (vertexTofind == vertices[i].name)
-        {
+        {   
             return true;
-            break;
-        }
-        else {
-            return false;
         }
     }
+    return false;
 }
 void Graph:: addEdge(char Vertex1, char Vertex2){//vertex1 A, vertex2 B
     if(vertexExist(Vertex1)&& vertexExist(Vertex2)){
@@ -46,7 +54,7 @@ void Graph ::removeVertex( char VertexToRemove){ //function to remove vertex fro
         data[vertexposi][i] = 0;
         data[i][vertexposi] = 0;
         }
-    vertices[vertexposi].name= NULL;
+    vertices[vertexposi].name= 'z';
     
     }
 }
@@ -65,10 +73,10 @@ void Graph :: removeedge(char vertex1, char vertex2){ //function to remove edge 
 
 
     int Graph ::   Vertices(){//function to return the number of vertices
-        int j;
+        int j=0;
         for (int i = 0; i < vertices.size(); i++)
         {
-         if (vertices[i].name == NULL){
+         if (vertices[i].name == 'z'){
                 continue;
             }
         j++; 
@@ -76,11 +84,11 @@ void Graph :: removeedge(char vertex1, char vertex2){ //function to remove edge 
         return j;
     } 
     
-        int Graph ::    numEdges(){  //function to return the number of edges
-            int i,j,k;
-              for (int i = 0; i < vertices.size(); i++)
+int Graph :: numEdges(){  //function to return the number of edges
+            int i,j,k=0;
+              for (int i = 0; i < data.size(); i++)
                  {
-                    for  (j = 0; j <vertices.size();j++){
+                    for  (j = 0; j <data.size();j++){
                         if (i == j){
                             continue;
                         }
@@ -92,22 +100,22 @@ void Graph :: removeedge(char vertex1, char vertex2){ //function to remove edge 
                     k++;
                 }
                 }
-                return k ;
+                return k;
              }
+            
 
-        
+             // vertices list = {vertex1,vertex2}
+             // vertex1 : {'A',0}
 
-
-//vertices list = {vertex1,vertex2}
-//vertex1 : {'A',0}
-
-int Graph:: findPostion(char vertex1){
-    for (int i = 0; i < vertices.size(); i++)
-    {
-        if(vertices[i].name = vertex1){
-            return vertices[i].position;
-        }
-    }
+             int Graph::findPostion(char vertex1)
+             {
+                 for (int i = 0; i < vertices.size(); i++)
+                 {
+                     if (vertices[i].name == vertex1)
+                     {
+                         return vertices[i].position;
+                     }
+                 }
 }
 bool Graph:: neighbour(char vertex1,char vertex2){
     //check their respective position if they form an edge joining each other.
@@ -130,6 +138,7 @@ string Graph:: neighbours(char vertex1){
             neighbours=neighbours+vertices[i].name;
         }
     }
+    return neighbours;
 }
 int Graph:: indegree(char vertex1){
     int vertex1Posi = findPostion(vertex1);
@@ -157,4 +166,15 @@ int Graph::outdegree(char vertex1)
 }
 int Graph:: degree(char vertex1){
         return indegree(vertex1) + outdegree(vertex1);
+}
+void Graph:: printMatrix(){
+    for (int i = 0; i < data.size(); i++)
+    {
+        for (int j = 0; j < data.size(); j++)
+        {
+            cout<<data[i][j]<<",";
+        }
+        cout<<endl;
+    }
+    
 }

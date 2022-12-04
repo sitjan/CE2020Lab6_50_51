@@ -8,12 +8,11 @@ struct Vertex{
     char name;
     int position;
 };
-
 class Graph {
 
     private:
     
-    bool isDirected;
+    bool isDirectedGraph;
     vector <vector <int>>data;// 2d Matrix
     vector <Vertex> vertices;
     int noOfVertex;    
@@ -23,6 +22,7 @@ class Graph {
     void addVertex(char newVertex);//add new vertex
     void addEdge(char Vertex1, char Vertex2);//add new edge
     void removeVertex( char VertexToRemove);
+    void removeedge(char vertex1, char vertex2) ;
     int Vertices();
     int numEdges();
     int indegree(char Vertex);
@@ -32,5 +32,6 @@ class Graph {
     bool neighbour(char Vertex1, char Vertex2);
     bool vertexExist(char vertexTofind);
     int findPostion(char vertex1);
+    void printMatrix();
 };
 #endif
