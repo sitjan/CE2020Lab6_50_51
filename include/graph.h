@@ -14,11 +14,9 @@ class Graph {
     private:
     
     bool isDirected;
-    vector <vector <int>>data;
+    vector <vector <int>>data;// 2d Matrix
     vector <Vertex> vertices;
-
     int noOfVertex;    
-
     public:
     bool isEmpty();
     bool isDirected();
@@ -33,5 +31,6 @@ class Graph {
     string neighbours(char Vertex);
     bool neighbour(char Vertex1, char Vertex2);
     bool vertexExist(char vertexTofind);
+    int findPostion(char vertex1)
 };
 #endif
