@@ -31,6 +31,6 @@ class Graph {
     string neighbours(char Vertex);
     bool neighbour(char Vertex1, char Vertex2);
     bool vertexExist(char vertexTofind);
-    int findPostion(char vertex1)
+    int findPostion(char vertex1);
 };
 #endif
