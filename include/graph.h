@@ -18,10 +18,10 @@ class Graph {
     vector <Vertex> vertices;
     int noOfVertex;    
     public:
-    bool isEmpty();
-    bool isDirected();
-    void addVertex(char newVertex);
-    void addEdge(char Vertex1, char Vertex2);
+    bool isEmpty();//checks if the graph is empty
+    bool isDirected();//checks if the graph is directed
+    void addVertex(char newVertex);//add new vertex
+    void addEdge(char Vertex1, char Vertex2);//add new edge
     void removeVertex( char VertexToRemove);
     int Vertices();
     int numEdges();
@@ -31,6 +31,6 @@ class Graph {
     string neighbours(char Vertex);
     bool neighbour(char Vertex1, char Vertex2);
     bool vertexExist(char vertexTofind);
-    int findPostion(char vertex1)
+    int findPostion(char vertex1);
 };
 #endif
