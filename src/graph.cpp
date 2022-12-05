@@ -26,7 +26,7 @@ void Graph:: addVertex(char newVertex){
     }
 }
 
-bool Graph :: vertexExist (char vertexTofind){
+bool Graph :: vertexExist (char vertexTofind){//function verifies if the vertex exists or not
     for (int i=0 ; i<vertices.size(); i++){
         if (vertexTofind == vertices[i].name)
         {   
@@ -35,11 +35,11 @@ bool Graph :: vertexExist (char vertexTofind){
     }
     return false;
 }
-void Graph:: addEdge(char Vertex1, char Vertex2){//vertex1 A, vertex2 B
-    if(vertexExist(Vertex1)&& vertexExist(Vertex2)){
+void Graph:: addEdge(char Vertex1, char Vertex2){// if vertex1 A, vertex2 B
+    if(vertexExist(Vertex1)&& vertexExist(Vertex2)){ // if the both the passed vertices exist then
         int vertex1Posi = findPostion(Vertex1); //2 A
         int vertex2Posi = findPostion(Vertex2); //3 B //edge: AB ,BA
-        data[vertex1Posi][vertex2Posi]=1;
+        data[vertex1Posi][vertex2Posi]=1; 
         data[vertex2Posi][vertex1Posi]=1;
     }
     else{
@@ -49,7 +49,7 @@ void Graph:: addEdge(char Vertex1, char Vertex2){//vertex1 A, vertex2 B
 
 void Graph ::removeVertex( char VertexToRemove){ //function to remove vertex from the graph
     if(vertexExist(VertexToRemove)){
-    int vertexposi = findPostion(VertexToRemove);
+    int vertexposi = findPostion(VertexToRemove);//locates the vertex that has to be removed
     for (int i=0;i< vertices.size(); i++){
         data[vertexposi][i] = 0;
         data[i][vertexposi] = 0;
@@ -96,7 +96,7 @@ int Graph :: numEdges(){  //function to return the number of edges
                             k++;
                         }
                     } 
-                if (data [i][i] == 1){
+                if (data [i][i] == 1){ // to avoid repeated counting in case of diagonals of the adjacency matrix
                     k++;
                 }
                 }
@@ -107,7 +107,7 @@ int Graph :: numEdges(){  //function to return the number of edges
              // vertices list = {vertex1,vertex2}
              // vertex1 : {'A',0}
 
-             int Graph::findPostion(char vertex1)
+             int Graph::findPostion(char vertex1)//locating the vertex and returns the position of the vertex
              {
                  for (int i = 0; i < vertices.size(); i++)
                  {
@@ -140,7 +140,7 @@ string Graph:: neighbours(char vertex1){
     }
     return neighbours;
 }
-int Graph:: indegree(char vertex1){
+int Graph:: indegree(char vertex1){//function to calculate the indegree of the vertex
     int vertex1Posi = findPostion(vertex1);
     int indegree=0;
     for (int i = 0; i < vertices.size(); i++)
@@ -151,7 +151,7 @@ int Graph:: indegree(char vertex1){
     }
     return indegree;
 }
-int Graph::outdegree(char vertex1)
+int Graph::outdegree(char vertex1)//function to calculate the outdegree of the vertex
 {
     int vertex1Posi = findPostion(vertex1);
     int outdegree = 0;
@@ -164,7 +164,7 @@ int Graph::outdegree(char vertex1)
     }
     return outdegree;
 }
-int Graph:: degree(char vertex1){
+int Graph:: degree(char vertex1){//function to caluclate the total degree of the function
         return indegree(vertex1) + outdegree(vertex1);
 }
 void Graph:: printMatrix(){
