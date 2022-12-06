@@ -4,11 +4,16 @@ using namespace std;
 
 int main(){
     Graph g1;
-    cout<<"Graph g1 created"<<endl;
-    if(g1.isEmpty()){//checking whether the graph is empty or not
-        cout<<"The graph is empty"<<endl;
+    if(g1.isEmpty()){
+        cout<<"The graph is empty.(Contains no vertices.)"<<endl;
+    }
+    if(g1.isDirected()){
+        cout<<"The graph is directed."<<endl;
+    }else{
+        cout<<"The graph is not directed."<<endl;
     }
     g1.addVertex('A');
+<<<<<<< HEAD
     if (g1.isEmpty())
     {
         cout << "The graph is empty" << endl;
@@ -47,3 +52,9 @@ int main(){
         cout<<"They are not neigbors"<<endl;
     }
 }
+=======
+    g1.addVertex('A');
+    g1.addVertex('A');
+}
+   
+>>>>>>> 07b30b58efcbf19c8ee3f8425e8003a32f047a70

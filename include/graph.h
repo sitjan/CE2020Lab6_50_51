@@ -12,7 +12,7 @@ class Graph {
 
     private:
     
-    bool isDirectedGraph;
+    bool isDirectedGraph=false;
     vector <vector <int>>data;// 2d Matrix
     vector <Vertex> vertices;
     int noOfVertex;    
