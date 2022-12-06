@@ -20,7 +20,11 @@ int main(){
     g1.addEdge('A','C'); //adding edge AC
     g1.addVertex('D');//adding edge D
     g1.addEdge('B','D'); //Adding edge BD
-    g1.removeedge('B','D'); // removing edge BD
+    g1.printMatrix();
+    g1.removeVertex('B'); //removing vertex B
+    cout<<"\n\n\n\n"<<endl;
+    g1.printMatrix();
+    g1.removeedge('A','C');
     g1.addEdge('A','D');// adding edge AD
     g1.addEdge('A', 'B'); //Adding edge AB
     g1.addEdge('A','A');//Adding edge AA
