@@ -6,7 +6,7 @@ bool Graph ::isEmpty()
     int count = 0;
     for (int i = 0; i < vertices.size(); i++)
     {
-        if (vertices[i].name = 'z')
+        if (vertices[i].name == 'z')
         {
             continue;
         }
@@ -25,14 +25,12 @@ void Graph::addVertex(char newVertex)
     vertex.name = newVertex;
     vertex.position = vertices.size();
     vertices.push_back(vertex);
-    noOfVertex += 1;
     if (data.size() == 0)
     {
         data.push_back(vector<int>(1, 0)); // vector 1 = {1,23,4,5,6,4}//vector.pushback(4)
     }
     else
     {
-        // euta loop ma chai add a column
         for (int i = 0; i < data.size(); i++)
         {
             data[i].push_back(0);
@@ -203,11 +201,12 @@ int Graph::degree(char vertex1)
 {
     return indegree(vertex1) + outdegree(vertex1);
 }
-int Graph:: degree(char vertex1){//function to caluclate the total degree of the function
-        return indegree(vertex1) + outdegree(vertex1);
+void Graph:: printMatrix(){//function to caluclate the total degree of the function
 
+    cout<<"  ";
     for (int i = 0; i < vertices.size(); i++)
     {
+        
         if (vertices[i].name == 'z')
         {
             continue;
