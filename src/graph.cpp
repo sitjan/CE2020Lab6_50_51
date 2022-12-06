@@ -41,10 +41,8 @@ void Graph::addVertex(char newVertex)
     }
 }
 
-bool Graph ::vertexExist(char vertexTofind)
-{
-    for (int i = 0; i < vertices.size(); i++)
-    {
+bool Graph :: vertexExist (char vertexTofind){//function verifies if the vertex exists or not
+    for (int i=0 ; i<vertices.size(); i++){
         if (vertexTofind == vertices[i].name)
         {
             return true;
@@ -52,14 +50,12 @@ bool Graph ::vertexExist(char vertexTofind)
     }
     return false;
 }
-void Graph::addEdge(char Vertex1, char Vertex2)
-{ // vertex1 A, vertex2 B
-    if (vertexExist(Vertex1) && vertexExist(Vertex2))
-    {
-        int vertex1Posi = findPostion(Vertex1); // 2 A
-        int vertex2Posi = findPostion(Vertex2); // 3 B //edge: AB ,BA
-        data[vertex1Posi][vertex2Posi] = 1;
-        data[vertex2Posi][vertex1Posi] = 1;
+void Graph:: addEdge(char Vertex1, char Vertex2){// if vertex1 A, vertex2 B
+    if(vertexExist(Vertex1)&& vertexExist(Vertex2)){ // if the both the passed vertices exist then
+        int vertex1Posi = findPostion(Vertex1); //2 A
+        int vertex2Posi = findPostion(Vertex2); //3 B //edge: AB ,BA
+        data[vertex1Posi][vertex2Posi]=1; 
+        data[vertex2Posi][vertex1Posi]=1;
     }
     else
     {
@@ -189,7 +185,7 @@ int Graph::indegree(char vertex1)
     }
     return indegree;
 }
-int Graph::outdegree(char vertex1)
+int Graph::outdegree(char vertex1)//function to calculate the outdegree of the vertex
 {
     int vertex1Posi = findPostion(vertex1);
     int outdegree = 0;
@@ -202,13 +198,14 @@ int Graph::outdegree(char vertex1)
     }
     return outdegree;
 }
+
 int Graph::degree(char vertex1)
 {
     return indegree(vertex1) + outdegree(vertex1);
 }
-void Graph::printMatrix()
-{
-    cout << "  ";
+int Graph:: degree(char vertex1){//function to caluclate the total degree of the function
+        return indegree(vertex1) + outdegree(vertex1);
+
     for (int i = 0; i < vertices.size(); i++)
     {
         if (vertices[i].name == 'z')
